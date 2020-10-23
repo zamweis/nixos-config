@@ -4,12 +4,11 @@
   home.packages = with pkgs; [
     # common
     chromium
-    keepassxc
     nitrokey-app
     nextcloud-client
     spotify
+    spotify-tray
     pcmanfm
-    xl2tpd
     unzip
     flameshot
     pavucontrol
@@ -24,27 +23,20 @@
     # development
     coreutils
     clang
-    kubectl
-    kubernetes-helm
-    jetbrains.phpstorm
-    # (texlive.combine {
-    #   inherit (pkgs.texlive)
-    #     scheme-full latexmk;
-    # })
+    jetbrains.idea-ultimate
     gnumake
     ripgrep
     fd
     docker-compose
     pv
     wireshark
-    postman
     nixops
 
     # appearance
     nitrogen
 
     # work
-    slack
+    mattermost
 
     # media
     vlc

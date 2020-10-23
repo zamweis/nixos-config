@@ -4,8 +4,8 @@
 
 - Main PC
   - galaxy
-- Lenovo ThinkPad E470
-  - nebula
+- Lenovo ThinkPad T550
+  - t550-nix
 
 ## Installation
 

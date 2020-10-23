@@ -2,8 +2,8 @@
   programs.git = {
     enable = true;
 
-    userName = "Vincent Cui";
-    userEmail = "wenvincent.cui@gmail.com";
+    userName = "Den Elfie";
+    userEmail = "denelfie@gmail.com";
     extraConfig = {
       # pull.rebase = true;
       color.ui = true;

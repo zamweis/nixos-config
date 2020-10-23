@@ -2,9 +2,9 @@
 let
   hostName = (import <nixpkgs/nixos> {}).config.networking.hostName;
 
-  mainMonitor = if hostName == "galaxy" then
+  mainMonitor = if hostName == "luminus" then
     "HDMI-0"
-  else if hostName == "nebula" then
+  else if hostName == "t550" then
     "eDP-1"
   else
     "UNDEFINED";

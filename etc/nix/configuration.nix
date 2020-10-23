@@ -30,10 +30,7 @@
       checkReversePath = false;
     };
 
-    extraHosts = ''
-      127.0.0.1 local.campusjaeger.de admin.local.campusjaeger.de arbeitgeber.local.campusjaeger.de www.local.campusjaeger.de candidates.local.campusjaeger.de api.local.campusjaeger.de employees.local.campusjaeger.de
-      # 18.185.191.158 test.campusjaeger.de arbeitgeber.test.campusjaeger.de admin.test.campusjaeger.de candidates.test.campusjaeger.de www.test.campusjaeger.de api.test.campusjaeger.de feed.test.campusjaeger.de companies.test.campusjaeger.de employees.test.campusjaeger.de
-    '';
+    # extraHosts = '''';
   };
 
   ##### Timezone and Internationalisation #####
@@ -78,27 +75,10 @@
     blueman.enable = true;
     # Gnome Keyring
     gnome3.gnome-keyring.enable = true;
-    # L2TP
-    strongswan = {
-      enable = true;
-      secrets = [
-        "ipsec.d/ipsec.nm-l2tp.secrets"
-      ];
-    };
     # GVFS for Samba
     gvfs.enable = true;
     # CUPS for printing
     printing.enable = true;
-    # Yubikey
-    pcscd.enable = true;
-    
-    udev = {
-      packages = with pkgs; [
-        # Yubikey
-        yubikey-personalization
-        libu2f-host
-      ];
-    };
   };
 
   programs = {
@@ -107,7 +87,6 @@
   };
 
   virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
 
   ##### X11, Window Manager, XDG, etc. #####
 
@@ -116,8 +95,8 @@
     enable = true;
 
     # Setting keyboard layout
-    layout = "us";
-    xkbVariant = "colemak";
+    layout = "de";
+    xkbOptions = "kpdl:dot"
 
     displayManager = {
       gdm.enable = true;
@@ -154,18 +133,17 @@
   
   users = {
     users = {
-      vincentcui = {
+      lluks = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" "audio" "docker" "video" "libvirtd" ];
+        extraGroups = [ "wheel" "networkmanager" "audio" "docker" "video" ];
         shell = pkgs.zsh;
-        home = "/home/vincentcui";
-        description = "Vincent Cui";
+        home = "/home/lluks";
         openssh.authorizedKeys.keyFiles = [ ./ssh/yubi.pub ];
       };
     };
   };
 
-  home-manager.users.vincentcui = (import ../../home/vincentcui/home-manager/home.nix {
+  home-manager.users.lluks = (import ../../home/lluks/home-manager/home.nix {
     inherit pkgs;
   });
 

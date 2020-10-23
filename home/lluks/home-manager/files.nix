@@ -1,5 +1,5 @@
 let
-  relativeConfigHomePath = "/config/home/vincentcui";
+  relativeConfigHomePath = "/config/home/lluks";
 in
 {
   # Nitrogen settings

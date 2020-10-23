@@ -5,13 +5,13 @@
 {
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-      <nixos-hardware/lenovo/thinkpad/e470>
+      # <nixos-hardware/lenovo/thinkpad/e470>
     ];
 
   networking = {
     interfaces = {
-      enp4s0.useDHCP = true;
-      wlp5s0.useDHCP = true;
+      enp0s25.useDHCP = true;
+      wlp3s0.useDHCP = true;
     };
   };
 
@@ -28,6 +28,11 @@
     { device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
+
+  fileSystems."/" =
+    { device = "/dev/disk/by-label/nixoshome";
+      fsType = "ext4";
+    };  
 
   fileSystems."/boot/efi" =
     { device = "/dev/disk/by-label/efi";

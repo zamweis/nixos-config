@@ -6,16 +6,24 @@ let
   mod = "Mod4";
 
   up = "i";
-  down = "e";
-  left = "n";
-  right = "o";
+  down = "k";
+  left = "j";
+  right = "l";
 
   systemMode = "(l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown";
 
-  customAutostart = if hostName == "galaxy" then
-      "exec --no-startup-id monitor-extend-left"
-    else if hostName == "nebula" then
-      ""
+  customAutostart = if hostName == "luminus" then
+      "exec --no-startup-id monitor-extend-right"
+    else if hostName == "t550" then
+      "
+      exec --no-startup-id mattermost-desktop --hidden
+      exec --no-startup-id pamac-tray
+      exec --no-startup-id blueberry-tray
+      exec --no-startup-id numlockx on
+      exec --no-startup-id pasystray
+      exec --no-startup-id conky -c ~/.config/i3/conky_grey
+
+      "
     else
       "";
 in
@@ -34,28 +42,28 @@ in
         colors = {
           background = "#ffffff";
           focused = {
-            border = "#4c7899";
-            background = "#285577";
+            border = "#546e7a";
+            background = "#546e7a";
             text = "#ffffff";
-            indicator = "#2e9ef4";
-            childBorder = "#285577";
+            indicator = "#7A5454";
+            childBorder = "#546e7a";
           };
           focusedInactive = {
-            border = "#333333";
-            background = "#5f676a";
+            border = "#222426";
+            background = "#222426";
             text = "#ffffff";
-            indicator = "#484e50";
-            childBorder = "#5f676a";
+            indicator = "#222426";
+            childBorder = "#222426";
           };
           unfocused = {
-            border = "#333333";
-            background = "#222222";
+            border = "#222426";
+            background = "#222426";
             text = "#888888";
-            indicator = "#292d2e";
-            childBorder = "#222222";
+            indicator = "#222426";
+            childBorder = "#222426";
           };
           urgent = {
-            border = "#2f343a";
+            border = "#222426";
             background = "#900000";
             text = "#ffffff";
             indicator = "#900000";
@@ -151,37 +159,44 @@ in
           "${mod}+control+${right}" = "exec --no-startup-id i3-msg move workspace to output right";
 
           # Applications
-          ## rofi
-          "${mod}+w" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi run -show drun -line-padding 4 -columns 2 -width 40 -padding 30 -hide-scrollbar -show-icons -drun-icon-theme";
-          ## urxvt
-          "${mod}+Return" = "exec --no-startup-id ${pkgs.rxvt_unicode}/bin/urxvt";
-          ## spotify
-          "${mod}+F1" = "exec --no-startup-id ${pkgs.spotify}/bin/spotify";
-          ## chromium
-          "${mod}+F2" = "exec --no-startup-id ${pkgs.chromium}/bin/chromium";
-          ## pcmanfm
-          "${mod}+F3" = "exec --no-startup-id ${pkgs.pcmanfm}/bin/pcmanfm";
-          ## pavucontrol
-          "${mod}+Shift+m" = "exec --no-startup-id ${pkgs.pavucontrol}/bin/pavucontrol";
+            ## rofi
+            "${mod}+d" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi run -show drun -line-padding 4 -columns 2 -width 40 -padding 30 -hide-scrollbar -show-icons -drun-icon-theme";
+            ## urxvt
+            "${mod}+Return" = "exec --no-startup-id ${pkgs.rxvt_unicode}/bin/urxvt";
+            ## spotify
+            "${mod}+F1" = "exec --no-startup-id ${pkgs.spotify}/bin/spotify";
+            ## chromium
+            "${mod}+F2" = "exec --no-startup-id ${pkgs.chromium}/bin/chromium";
+            ## pcmanfm
+            "${mod}+e" = "exec --no-startup-id ${pkgs.pcmanfm}/bin/pcmanfm";
+            ## pavucontrol
+            "${mod}+Shift+m" = "exec --no-startup-id ${pkgs.pavucontrol}/bin/pavucontrol";
+            # Screenshots
+            ## Without GUI
+            "Print" = "exec --no-startup-id screenshot";
+            ## With GUI
+            "Shift+Print" = "exec --no-startup-id screenshot-gui";
 
-          # Screenshots
-          ## Without GUI
-          "Print" = "exec --no-startup-id screenshot";
-          ## With GUI
-          "Shift+Print" = "exec --no-startup-id screenshot-gui";
-
-          # Audio Settings
-          "XF86AudioRaiseVolume" = ''exec --no-startup-id "amixer sset Master '5%+'"'';
-          "XF86AudioLowerVolume" = ''exec --no-startup-id "amixer sset Master '5%-'"'';
-          "XF86AudioMute" = ''exec --no-startup-id "amixer set Master toggle"'';
-          "XF86AudioPlay" = ''exec --no-startup-id playerctl play-pause'';
-          "XF86AudioNext" = ''exec --no-startup-id playerctl next'';
-          "XF86AudioPrev" = ''exec --no-startup-id playerctl previous'';
-          "XF86AudioStop" = ''exec --no-startup-id playerctl stop'';
-
-          # Brightness Settings
-          "XF86MonBrightnessUp" = "exec --no-startup-id light -A 10";
-          "XF86MonBrightnessDown" = "exec --no-startup-id light -U 10";
+          # XF86-Keys
+            # Audio Settings
+            "XF86AudioRaiseVolume" = ''exec --no-startup-id "amixer sset Master '5%+'"'';
+            "XF86AudioLowerVolume" = ''exec --no-startup-id "amixer sset Master '5%-'"'';
+            "XF86AudioMute" = ''exec --no-startup-id "amixer set Master toggle"'';
+            "XF86AudioPlay" = ''exec --no-startup-id playerctl play-pause'';
+            "XF86AudioNext" = ''exec --no-startup-id playerctl next'';
+            "XF86AudioPrev" = ''exec --no-startup-id playerctl previous'';
+            "XF86AudioStop" = ''exec --no-startup-id playerctl stop'';
+            # Brightness Settings
+            "XF86MonBrightnessUp" = "exec --no-startup-id light -A 10";
+            "XF86MonBrightnessDown" = "exec --no-startup-id light -U 10";
+            # Settings Manager
+            "XF86Tools" = ''exec --no-startup-id xfce4-settings-manager'';
+            # Rofi
+            "XF86Search" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi run -show drun -line-padding 4 -columns 2 -width 40 -padding 30 -hide-scrollbar -show-icons -drun-icon-theme";
+            # Chromium
+            "XF86HomePage" = "exec --no-startup-id chromium;focus";
+            # Calculator
+            "XF86Calculator" = "exec --no-startup-id gnome-calculator;focus";
         };
 
         modes = {
@@ -233,7 +248,7 @@ in
 
         exec_always --no-startup-id nitrogen --restore
         exec_always --no-startup-id systemctl --user restart polybar
-        exec --no-startup-id betterlockscreen -u /config/home/vincentcui/wallpaper/running-simple.jpg
+        exec --no-startup-id betterlockscreen -u /config/home/lluks/wallpaper/minimalistic-landscape.jpg
       '' + customAutostart;
     };
   };

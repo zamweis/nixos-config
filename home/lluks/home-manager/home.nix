@@ -3,7 +3,6 @@
   imports = [
     ./packages.nix
     ./zsh.nix
-    ./ssh.nix
     ./vscode.nix
     ./scripts.nix
     ./urxvt.nix
