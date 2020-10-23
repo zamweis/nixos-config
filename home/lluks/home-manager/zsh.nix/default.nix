@@ -30,7 +30,6 @@ in
     shellAliases = {
       ll = "ls -l";
       la = "ls -la";
-      cj-shell = "nix-shell /config/home/vincentcui/development/campusjaeger/sams.nix";
     };
     history = {
       path = "${relativeXDGDataPath}/zsh/.zsh_history";

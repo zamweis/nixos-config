@@ -4,7 +4,7 @@ This is my configuration file for my computer.
 
 { config, pkgs, ... }:
 let
-  hostName = "galaxy";
+  hostName = "luminus";
 in
 {
   imports =

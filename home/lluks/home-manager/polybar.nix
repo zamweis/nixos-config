@@ -20,6 +20,14 @@ let
     bn = "#43a047";
     bm = "#fdd835";
     bd = "#e53935";
+    trans = "#00000000";
+    white = "#FFFFFF";
+    black = "#000000";
+    mainBlue = "#4DB6AC";
+    mainRed = "#B64F4D";
+    mainGreen = "#4DB667";
+    mainPurple = "#4D86B6";
+    mainDarkBlue = "#546E7A";
   };
 in
 {
@@ -34,8 +42,8 @@ in
         bottom = false;
         fixed-center = true;
 
-        width = "100%:-22";
-        height = "26";
+        width = "100%:-18";
+        height = "25";
 
         offset-x = 11;
         offset-y = 11;
@@ -84,7 +92,7 @@ in
 
         tray-position = "center";
       };
-      "bar/nebula" = {
+      "bar/t550" = {
         "inherit" = "bar/bar";
 
         modules-left = "launcher i3 cpu_bar memory_bar temperature";
@@ -125,7 +133,7 @@ in
       };
       "module/wired-network" = {
         type = "internal/network";
-        interface = "enp4s0";
+        interface = "enp0s25";
 
         # Seconds to sleep between updates
         # Default: 1
@@ -212,7 +220,7 @@ in
       };
       "module/wireless-network" = {
         type = "internal/network";
-        interface = "wlp5s0";
+        interface = "wlp3s0";
 
         # Seconds to sleep between updates
         # Default: 1
@@ -433,7 +441,7 @@ in
         # Default reverts to thermal zone setting
         hwmon-path = if hostName == "galaxy" then
           "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input"
-        else if hostName == "nebula" then
+        else if hostName == "t550" then
           "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input"
         else "";
 
