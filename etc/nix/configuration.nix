@@ -96,7 +96,7 @@
 
     # Setting keyboard layout
     layout = "de";
-    xkbOptions = "kpdl:dot"
+    xkbOptions = "kpdl:dot";
 
     displayManager = {
       gdm.enable = true;
